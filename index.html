@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Portafolio personal de Daniela Espinosa Cardona, estudiante de programación web.">
+
+  <meta name="author" content="Daniela Espinosa Cardona">
+
+  <title>Portafolio de Daniela Espinosa Cardona</title>
+</head>
+
+<body>
+  <header>
+    <h1>Daniela Espinosa Cardona</h1>
+    <p>Estudiante de Programación Web 1</p>
+
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>
+        Hola, soy Daniela Espinosa Cardona.
+        Actualmente estoy aprendiendo programación web
+        y este es mi portafolio personal, donde presentaré
+        mis conocimientos y proyectos académicos.
+      </p>
+
+      <h3>Mis habilidades</h3>
+      <ul>
+        <li>HTML</li>
+        <li>Git y GitHub</li>
+      </ul>
+    </section>
+    
+<button id="abrir-modal">Ver más sobre mí</button>
+
+<dialog id="modal">
+  <h2>Más sobre mí</h2>
+
+  <p>
+    Hola, soy Daniela Espinosa Cardona, estudiante de
+    Programación Web 1. Me interesa aprender cosas nuevas,
+    desarrollar mis habilidades tecnológicas y crear
+    páginas web. A través de este portafolio quiero
+    mostrar mi aprendizaje y mis proyectos académicos.
+  </p>
+
+  <button id="cerrar-modal">Cerrar</button>
+</dialog>
+
+<script>
+  const modal = document.getElementById('modal');
+
+  document.getElementById('abrir-modal').addEventListener('click', () => {
+    modal.showModal();
+  });
+
+  document.getElementById('cerrar-modal').addEventListener('click', () => {
+    modal.close();
+  });
+</script>
+
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+
+      <article>
+        <h3>Mi primer proyecto</h3>
+        <p>
+          Proyecto académico para poner en práctica
+          mis conocimientos de programación web.
+        </p>
+      </article>
+
+      <article>
+        <h3>Segundo proyecto</h3>
+        <p>
+          Espacio para presentar otro proyecto o actividad
+          desarrollada durante mi proceso de aprendizaje.
+        </p>
+      </article>
+      
+<!-- PLANTILLA DE TARJETA -->
+<template id="tarjeta-plantilla">
+  <style>
+    .tarjeta {
+      border: 1px solid #999;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+  </style>
+
+  <div class="tarjeta">
+    <h3>
+      <slot name="titulo">Sin título</slot>
+    </h3>
+
+    <p>
+      <slot name="texto">Sin descripción</slot>
+    </p>
+  </div>
+</template>
+
+<!-- TARJETA DE MI PORTAFOLIO -->
+<mi-tarjeta>
+  <span slot="titulo">Mi portafolio web</span>
+  <span slot="texto">
+    Proyecto académico de Daniela Espinosa Cardona
+    para practicar HTML y aprender a construir
+    páginas web.
+  </span>
+</mi-tarjeta>
+
+<script>
+  class MiTarjeta extends HTMLElement {
+    constructor() {
+      super();
+
+      const shadow = this.attachShadow({ mode: 'open' });
+
+      const plantilla = document.getElementById(
+        'tarjeta-plantilla'
+      );
+
+      shadow.appendChild(
+        plantilla.content.cloneNode(true)
+      );
+    }
+  }
+
+  customElements.define('mi-tarjeta', MiTarjeta);
+</script>
+
+    </section>
+    
+<section id="multimedia">
+  <h2>Galería y multimedia</h2>
+
+  <figure>
+    <img
+      src="Foto.jpg.jpg"
+      alt="Foto de perfil de Daniela Espinosa Cardona"
+      width="300">
+    <figcaption>Mi foto de perfil</figcaption>
+  </figure>
+
+  <h3>Mi horario de estudio</h3>
+
+  <table>
+    <caption>Horario semanal</caption>
+    <thead>
+      <tr>
+        <th>Día</th>
+        <th>Materia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lunes</td>
+        <td>Programación Web 1</td>
+      </tr>
+      <tr>
+        <td>Miércoles</td>
+        <td>Bases de datos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Video de presentación</h3>
+
+  <video controls width="400">
+    <source src="presentacion.mp4" type="video/mp4">
+    Tu navegador no soporta video.
+  </video>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+
+  <p>
+    ¡Hola! Gracias por visitar mi portafolio.
+    Soy Daniela Espinosa Cardona, estudiante de
+    Programación Web 1. Si deseas comunicarte conmigo,
+    aquí encontrarás mis datos de contacto.
+  </p>
+
+  <p>
+    <strong>Teléfono:</strong>
+    <a href="tel:3164124472">3164124472</a>
+  </p>
+
+  <p>
+    <strong>Correo electrónico:</strong>
+    <a href="mailto:danijp498@gmail.com">
+      danijp498@gmail.com
+    </a>
+  </p>
+
+  <h3>Envíame un mensaje</h3>
+
+  <form action="#" method="post">
+    <p>
+      <label for="nombre">Nombre completo</label><br>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Escribe tu nombre"
+        required
+        minlength="3">
+    </p>
+
+    <p>
+      <label for="correo">Correo electrónico</label><br>
+      <input
+        type="email"
+        id="correo"
+        name="correo"
+        placeholder="ejemplo@correo.com"
+        required>
+    </p>
+
+    <p>
+      <label for="mensaje">Mensaje</label><br>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows="4"
+        placeholder="Escribe tu mensaje aquí..."
+        required></textarea>
+    </p>
+
+    <button type="submit">Enviar mensaje</button>
+  </form>
+</section>
+
+<section id="preguntas">
+  <h2>Preguntas frecuentes</h2>
+
+  <details>
+    <summary>¿Qué tecnologías estás aprendiendo?</summary>
+    <p>
+      Actualmente estoy aprendiendo HTML en la asignatura
+      de Programación Web 1. Próximamente continuaré
+      aprendiendo CSS y JavaScript para mejorar mis
+      habilidades en el desarrollo de páginas web.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Qué objetivo tienes con este portafolio?</summary>
+    <p>
+      Mi objetivo es presentar mis conocimientos,
+      mostrar mis proyectos académicos y compartir
+      mi progreso en el aprendizaje de programación web.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Cómo puedes contactarme?</summary>
+    <p>
+      Puedes comunicarte conmigo mediante mi correo
+      electrónico danijp498@gmail.com o a través
+      de la sección de contacto de mi portafolio.
+    </p>
+  </details>
+
+  <details>
+    <summary>¿Estás disponible para proyectos?</summary>
+    <p>
+      Estoy interesada en seguir aprendiendo y participar
+      en proyectos académicos que me permitan practicar
+      y fortalecer mis conocimientos de programación web.
+    </p>
+  </details>
+</section>
+
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Daniela Espinosa Cardona.
+      Todos los derechos reservados.
+    </p>
+  </footer>
+</body>
+
+</html>
